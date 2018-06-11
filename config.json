@@ -1,0 +1,59 @@
+{
+    "data": {
+        "basedir": "/path/to/data", 
+        "ending": ".h5"
+    },
+    "jobs": [
+        {
+            "data_prefix": "raveled_",
+            "model_fn": "build_raveled_model",
+            "random_selection": 9,
+            "proc": 1,
+            "model": {
+                "bn": [true, false],
+                "dropout_rate": [0.0, 0.4]
+            },
+            "training": {
+                "basedir": "/path/to/save/things",
+                "class_one": "gamma",
+                "class_two": "eplus",
+                "adam_lr": [0.0001, 0.0005, 0.001],
+                "batch_size": 256
+            }
+        }, 
+        {
+            "data_prefix": "data_",
+            "model_fn": "build_densenet_model",
+            "random_selection": 3,
+            "proc": 1,
+            "model": {},
+            "training": {
+                "basedir": "/path/to/save/things",
+                "class_one": "gamma",
+                "class_two": "eplus",
+                "adam_lr": [0.0001, 0.0005, 0.001],
+                "batch_size": 256
+            }
+        },
+        {
+            "data_prefix": "features_",
+            "model_fn": "build_shower_shape_model",
+            "random_selection": 10,
+            "proc": 1,
+            "model": {
+                "skip": [true, false],
+                "bn": [true, false],
+                "dropout_rate": [0.0, 0.2]
+            },
+            "training": {
+                "basedir": "/path/to/save/things",
+                "class_one": "gamma",
+                "class_two": "eplus",
+                "adam_lr": [0.0001, 0.0005, 0.001],
+                "batch_size": 256
+            }
+        }
+    ]   
+}
+
+
