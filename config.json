@@ -1,7 +1,7 @@
 {
     "data": {
-        "basedir": "/path/to/data", 
-        "ending": ".h5"
+        "basedir": "/path/to/data",
+        "ending": ".hdf5"
     },
     "jobs": [
         {
@@ -20,7 +20,7 @@
                 "adam_lr": [0.0001, 0.0005, 0.001],
                 "batch_size": 256
             }
-        }, 
+        },
         {
             "data_prefix": "data_",
             "model_fn": "build_densenet_model",
@@ -53,7 +53,7 @@
                 "batch_size": 256
             }
         }
-    ]   
+    ]
 }
 
 

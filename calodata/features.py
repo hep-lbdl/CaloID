@@ -1,4 +1,4 @@
-import shower_shapes as sh
+from . import shower_shapes as sh
 import pandas as pd
 
 
@@ -20,7 +20,7 @@ def extract_dataframe(data):
         )
     }
 
-    for layer in xrange(3):
+    for layer in range(3):
         l_energy = sh.energy(layer, data)
         features.update({
             'sparsity_layer_{}'.format(layer): sh.sparsity(layer, data),

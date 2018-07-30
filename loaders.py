@@ -18,16 +18,16 @@ def load_calodata(fpaths):
     '''
     Returns:
     --------
-        data: a list of 3 numpy arrays, representing the energy deposition in 
+        data: a list of 3 numpy arrays, representing the energy deposition in
             each layer for a group of showers contained in the file 'fpath'
     '''
     for fpath in fpaths:
         with h5py.File(fpath, 'r') as h5:
             try:
                 data = [concat((data[i], h5['layer_{}'.format(i)][:]))
-                        for i in xrange(3)]
+                        for i in range(3)]
             except NameError:
-                data = [h5['layer_{}'.format(i)][:] for i in xrange(3)]
+                data = [h5['layer_{}'.format(i)][:] for i in range(3)]
     return data
 
 
@@ -43,19 +43,21 @@ def load_all_data(basedir, class_one='piplus', class_two='eplus',
     import glob
     logger = logging.getLogger(__name__)
 
-    logger.info('Extracting data for ' + class_one)
+    c1path = glob.glob(
+        os.path.join(os.path.abspath(basedir),
+                     '{}{}'.format(class_one, ending))
+    )
+    logger.info('Extracting data for {} from {}'.format(class_one, c1path))
+    c1 = load_calodata(c1path)
 
-    c1 = load_calodata(glob.glob(
-        os.path.join(basedir, '{}{}'.format(class_one, ending))
-    ))
+    c2path = glob.glob(
+        os.path.join(os.path.abspath(basedir),
+                     '{}{}'.format(class_two, ending))
+    )
+    logger.info('Extracting data for {} from {}'.format(class_two, c2path))
+    c2 = load_calodata(c2path)
 
-    logger.info('Extracting data for ' + class_two)
-
-    c2 = load_calodata(glob.glob(
-        os.path.join(basedir, '{}{}'.format(class_two, ending))
-    ))
-
-    data = map(concat, zip(c1, c2))
+    data = list(map(concat, zip(c1, c2)))
 
     labels = np.array([1] * c1[0].shape[0] + [0] * c2[0].shape[0])
 
