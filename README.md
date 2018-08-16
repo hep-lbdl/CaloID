@@ -11,7 +11,7 @@
 ### Requirements
 
 * Keras==2.2.0
-* Keras-contrib==2.0.8
+* Keras-contrib (from our fork, on branch [`densenet-mod`](https://github.com/hep-lbdl/keras-contrib/tree/densenet-mod))
 * Pandas
 * Numpy
 * Scikit learn
