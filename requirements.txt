@@ -1,0 +1,6 @@
+scikit-learn
+pandas
+keras==2.0.8
+tensorflow==1.9.0
+h5py
+git+https://github.com/hep-lbdl/keras-contrib@densenet-mod
