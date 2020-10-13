@@ -123,7 +123,7 @@ def build_shower_shape_model(data, bn=True, dropout_rate=0.0, skip=False):
 
 def build_raveled_model(data, bn=True, dropout_rate=0.0):
 
-    apply_bn = lambda x: BatchNormalization()(x) if bn else lambda x: x
+    apply_bn = (lambda x: BatchNormalization()(x)) if bn else (lambda x: x)
 
     x = Input(shape=(data.shape[1],))
 
