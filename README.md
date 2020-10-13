@@ -14,10 +14,12 @@ Just run `pip install -r requirements.txt` (or, `pip install -r requirements-gpu
 
 _[update 10/13/20]_ This requires some old software, so please consider using a virtual environment. The specific versions of Keras and TensorFlow matter.
 
+We recommend using Python 3. If you need to use Python 2, please downgrade the TensorFlow version to 1.15.0.
+
 * Keras==2.0.8
 * Keras-contrib (from our fork, on branch [`densenet-mod`](https://github.com/hep-lbdl/keras-contrib/tree/densenet-mod))
 * Pandas
 * Numpy
 * Scikit learn
 * h5py
-* TensorFlow==1.9.0 (make sure to install the GPU version if you can)
+* TensorFlow<=1.15.4 (make sure to install the GPU version if you can)
